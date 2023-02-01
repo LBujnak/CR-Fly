@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		803D79B3294E053300DC0D3E /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803D79B2294E053300DC0D3E /* AppController.swift */; };
+		803D79B5294E053300DC0D3E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803D79B4294E053300DC0D3E /* MainView.swift */; };
+		803D79B7294E053500DC0D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 803D79B6294E053500DC0D3E /* Assets.xcassets */; };
+		803D79C2294E05DE00DC0D3E /* ProductCommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803D79C1294E05DE00DC0D3E /* ProductCommunicationService.swift */; };
+		803D79DA2950732800DC0D3E /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803D79D92950732800DC0D3E /* LibraryView.swift */; };
+		803D79DE2952500900DC0D3E /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803D79DD2952500900DC0D3E /* GlobalData.swift */; };
+		804622C3297A98A100EE041A /* VideoPreviewerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804622C2297A98A100EE041A /* VideoPreviewerAdapter.swift */; };
+		804622C5297A990000EE041A /* DecodeImageCalibrateLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804622C4297A990000EE041A /* DecodeImageCalibrateLogic.swift */; };
+		808A30FC295E1D8F00B17677 /* DJIDefaultFPV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808A30FB295E1D8F00B17677 /* DJIDefaultFPV.storyboard */; };
+		808A30FE295E1D9D00B17677 /* DefaultFPVLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A30FD295E1D9D00B17677 /* DefaultFPVLayoutController.swift */; };
+		808A3100295E1E0500B17677 /* DroneFPVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A30FF295E1E0500B17677 /* DroneFPVView.swift */; };
+		808F8E6C2978CA5C00615628 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808F8E6B2978CA5C00615628 /* Helper.swift */; };
+		808F8E6E29793E1800615628 /* LibraryCommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808F8E6D29793E1800615628 /* LibraryCommunicationService.swift */; };
+		808F8E7A2979701B00615628 /* LibraryPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808F8E792979701B00615628 /* LibraryPreviewView.swift */; };
+		80F424612979D9DC0076C10D /* VideoPlaybackView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80F424602979D9DC0076C10D /* VideoPlaybackView.storyboard */; };
+		80F424632979D9F40076C10D /* VideoPlaybackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F424622979D9F40076C10D /* VideoPlaybackController.swift */; };
+		E71595345F59656F0ED2FF57 /* Pods_CR_Fly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7337CD2CF3A5DEFE5D7CFA49 /* Pods_CR_Fly.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3A15FCDCF0C0BED56FC0791A /* Pods-CR Fly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CR Fly.debug.xcconfig"; path = "Target Support Files/Pods-CR Fly/Pods-CR Fly.debug.xcconfig"; sourceTree = "<group>"; };
+		7337CD2CF3A5DEFE5D7CFA49 /* Pods_CR_Fly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CR_Fly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027C1DC29584A7C00E0B6AC /* CR-Fly-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CR-Fly-Info.plist"; sourceTree = SOURCE_ROOT; };
+		803D79AF294E053300DC0D3E /* CR Fly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CR Fly.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		803D79B2294E053300DC0D3E /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		803D79B4294E053300DC0D3E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		803D79B6294E053500DC0D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		803D79C1294E05DE00DC0D3E /* ProductCommunicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCommunicationService.swift; sourceTree = "<group>"; };
+		803D79D92950732800DC0D3E /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		803D79DD2952500900DC0D3E /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
+		804622C2297A98A100EE041A /* VideoPreviewerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewerAdapter.swift; sourceTree = "<group>"; };
+		804622C4297A990000EE041A /* DecodeImageCalibrateLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeImageCalibrateLogic.swift; sourceTree = "<group>"; };
+		808A30FB295E1D8F00B17677 /* DJIDefaultFPV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DJIDefaultFPV.storyboard; sourceTree = "<group>"; };
+		808A30FD295E1D9D00B17677 /* DefaultFPVLayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFPVLayoutController.swift; sourceTree = "<group>"; };
+		808A30FF295E1E0500B17677 /* DroneFPVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneFPVView.swift; sourceTree = "<group>"; };
+		808F8E6B2978CA5C00615628 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		808F8E6D29793E1800615628 /* LibraryCommunicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCommunicationService.swift; sourceTree = "<group>"; };
+		808F8E792979701B00615628 /* LibraryPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPreviewView.swift; sourceTree = "<group>"; };
+		80F424602979D9DC0076C10D /* VideoPlaybackView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlaybackView.storyboard; sourceTree = "<group>"; };
+		80F424622979D9F40076C10D /* VideoPlaybackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlaybackController.swift; sourceTree = "<group>"; };
+		A67DEC7499F7039E07771A2A /* Pods-CR Fly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CR Fly.release.xcconfig"; path = "Target Support Files/Pods-CR Fly/Pods-CR Fly.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		803D79AC294E053300DC0D3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E71595345F59656F0ED2FF57 /* Pods_CR_Fly.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		60BDB24B40D6F5701F6C6A36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7337CD2CF3A5DEFE5D7CFA49 /* Pods_CR_Fly.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		803D79A6294E053300DC0D3E = {
+			isa = PBXGroup;
+			children = (
+				803D79B1294E053300DC0D3E /* CR Fly */,
+				803D79B0294E053300DC0D3E /* Products */,
+				836FA188223B8FA54F9D6D05 /* Pods */,
+				60BDB24B40D6F5701F6C6A36 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		803D79B0294E053300DC0D3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				803D79AF294E053300DC0D3E /* CR Fly.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		803D79B1294E053300DC0D3E /* CR Fly */ = {
+			isa = PBXGroup;
+			children = (
+				8027C1DC29584A7C00E0B6AC /* CR-Fly-Info.plist */,
+				803D79B6294E053500DC0D3E /* Assets.xcassets */,
+				803D79DD2952500900DC0D3E /* GlobalData.swift */,
+				803D79B2294E053300DC0D3E /* AppController.swift */,
+				803D79D629506F8D00DC0D3E /* Views */,
+				803D79C0294E057000DC0D3E /* DJIServices */,
+				808F8E602978986600615628 /* Utilties */,
+			);
+			path = "CR Fly";
+			sourceTree = "<group>";
+		};
+		803D79C0294E057000DC0D3E /* DJIServices */ = {
+			isa = PBXGroup;
+			children = (
+				803D79C1294E05DE00DC0D3E /* ProductCommunicationService.swift */,
+				808F8E6D29793E1800615628 /* LibraryCommunicationService.swift */,
+			);
+			path = DJIServices;
+			sourceTree = "<group>";
+		};
+		803D79D629506F8D00DC0D3E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				804622C1297A989300EE041A /* PlaybackHelper */,
+				808A30FA295E1D7900B17677 /* FPV */,
+				803D79B4294E053300DC0D3E /* MainView.swift */,
+				803D79D92950732800DC0D3E /* LibraryView.swift */,
+				808F8E792979701B00615628 /* LibraryPreviewView.swift */,
+				808A30FF295E1E0500B17677 /* DroneFPVView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		804622C1297A989300EE041A /* PlaybackHelper */ = {
+			isa = PBXGroup;
+			children = (
+				804622C2297A98A100EE041A /* VideoPreviewerAdapter.swift */,
+				804622C4297A990000EE041A /* DecodeImageCalibrateLogic.swift */,
+			);
+			path = PlaybackHelper;
+			sourceTree = "<group>";
+		};
+		808A30FA295E1D7900B17677 /* FPV */ = {
+			isa = PBXGroup;
+			children = (
+				808A30FB295E1D8F00B17677 /* DJIDefaultFPV.storyboard */,
+				808A30FD295E1D9D00B17677 /* DefaultFPVLayoutController.swift */,
+				80F424602979D9DC0076C10D /* VideoPlaybackView.storyboard */,
+				80F424622979D9F40076C10D /* VideoPlaybackController.swift */,
+			);
+			path = FPV;
+			sourceTree = "<group>";
+		};
+		808F8E602978986600615628 /* Utilties */ = {
+			isa = PBXGroup;
+			children = (
+				808F8E6B2978CA5C00615628 /* Helper.swift */,
+			);
+			path = Utilties;
+			sourceTree = "<group>";
+		};
+		836FA188223B8FA54F9D6D05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A15FCDCF0C0BED56FC0791A /* Pods-CR Fly.debug.xcconfig */,
+				A67DEC7499F7039E07771A2A /* Pods-CR Fly.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		803D79AE294E053300DC0D3E /* CR Fly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 803D79BD294E053500DC0D3E /* Build configuration list for PBXNativeTarget "CR Fly" */;
+			buildPhases = (
+				86DF38C2973F8E8AB1E062C0 /* [CP] Check Pods Manifest.lock */,
+				803D79AB294E053300DC0D3E /* Sources */,
+				803D79AC294E053300DC0D3E /* Frameworks */,
+				803D79AD294E053300DC0D3E /* Resources */,
+				22B1C67D88DC8B327EEC95AD /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CR Fly";
+			packageProductDependencies = (
+			);
+			productName = "CR Fly";
+			productReference = 803D79AF294E053300DC0D3E /* CR Fly.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		803D79A7294E053300DC0D3E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					803D79AE294E053300DC0D3E = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1420;
+					};
+				};
+			};
+			buildConfigurationList = 803D79AA294E053300DC0D3E /* Build configuration list for PBXProject "CR Fly" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 803D79A6294E053300DC0D3E;
+			packageReferences = (
+			);
+			productRefGroup = 803D79B0294E053300DC0D3E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				803D79AE294E053300DC0D3E /* CR Fly */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		803D79AD294E053300DC0D3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				803D79B7294E053500DC0D3E /* Assets.xcassets in Resources */,
+				80F424612979D9DC0076C10D /* VideoPlaybackView.storyboard in Resources */,
+				808A30FC295E1D8F00B17677 /* DJIDefaultFPV.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22B1C67D88DC8B327EEC95AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CR Fly/Pods-CR Fly-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CR Fly/Pods-CR Fly-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CR Fly/Pods-CR Fly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86DF38C2973F8E8AB1E062C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CR Fly-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		803D79AB294E053300DC0D3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80F424632979D9F40076C10D /* VideoPlaybackController.swift in Sources */,
+				808F8E6E29793E1800615628 /* LibraryCommunicationService.swift in Sources */,
+				803D79DE2952500900DC0D3E /* GlobalData.swift in Sources */,
+				803D79C2294E05DE00DC0D3E /* ProductCommunicationService.swift in Sources */,
+				808A30FE295E1D9D00B17677 /* DefaultFPVLayoutController.swift in Sources */,
+				804622C3297A98A100EE041A /* VideoPreviewerAdapter.swift in Sources */,
+				808F8E7A2979701B00615628 /* LibraryPreviewView.swift in Sources */,
+				803D79B5294E053300DC0D3E /* MainView.swift in Sources */,
+				803D79DA2950732800DC0D3E /* LibraryView.swift in Sources */,
+				808A3100295E1E0500B17677 /* DroneFPVView.swift in Sources */,
+				804622C5297A990000EE041A /* DecodeImageCalibrateLogic.swift in Sources */,
+				803D79B3294E053300DC0D3E /* AppController.swift in Sources */,
+				808F8E6C2978CA5C00615628 /* Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		803D79BB294E053500DC0D3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		803D79BC294E053500DC0D3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		803D79BE294E053500DC0D3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A15FCDCF0C0BED56FC0791A /* Pods-CR Fly.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 383777U9D5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CR-Fly-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To access position on map.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To access possition on map.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rp.CR-Fly";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		803D79BF294E053500DC0D3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A67DEC7499F7039E07771A2A /* Pods-CR Fly.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 383777U9D5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CR-Fly-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To access position on map.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To access possition on map.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rp.CR-Fly";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		803D79AA294E053300DC0D3E /* Build configuration list for PBXProject "CR Fly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				803D79BB294E053500DC0D3E /* Debug */,
+				803D79BC294E053500DC0D3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		803D79BD294E053500DC0D3E /* Build configuration list for PBXNativeTarget "CR Fly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				803D79BE294E053500DC0D3E /* Debug */,
+				803D79BF294E053500DC0D3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 803D79A7294E053300DC0D3E /* Project object */;
+}
