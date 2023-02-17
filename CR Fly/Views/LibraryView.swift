@@ -11,8 +11,36 @@ struct LibraryView: View {
     let columns = [GridItem(.adaptive(minimum: 140),alignment: .center)]
     
     var body: some View {
+        if(self.globalData.mediaList.count == 0 || !self.globalData.mediaFetched){
+            VStack{
+                self.createTopBar()
+                if(self.globalData.mediaList.count == 0){
+                    Spacer()
+                    Image(systemName: "photo.fill").foregroundColor(.gray).font(.custom("Photo icon", fixedSize: 80))
+                    Text("No video cache").foregroundColor(.gray).padding([.top],20)
+                    Spacer()
+                }
+                else if(!self.globalData.mediaFetched){
+                    Spacer()
+                    ProgressView().scaleEffect(x: 4, y: 4, anchor: .center).progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    Spacer()
+                }
+            }.background(Color.black.ignoresSafeArea())
+        }
+        else{
+            HideableTopView(){
+                self.createTopBar()
+            } content: {
+                VStack{
+                    self.createPreviewList()
+                }.background(Color.black.ignoresSafeArea())
+            }.background(Color.black.ignoresSafeArea()).alert(isPresented: self.$globalData.globalAlert){ Alert(title: self.globalData.alertTitle, message: self.globalData.alertMsg, dismissButton: .cancel()) }
+            if(self.selectMode){ self.createBottomBar() }
+        }
+    }
+    
+    private func createTopBar() -> some View{
         VStack{
-            //TOP Bar, exit btn, selection btn
             HStack(spacing: 30){
                 if(!self.selectMode){
                     Button("←"){
@@ -24,7 +52,7 @@ struct LibraryView: View {
                     if(!self.globalData.droneConnected || DJISDKManager.product()!.model == nil) { Text("Aircraft Album").foregroundColor(.white) }
                     else { Text(DJISDKManager.product()!.model!).foregroundColor(.white) }
                     Spacer()
-                
+                    
                     Image(systemName: "cursorarrow.square").font(Font.system(.title)).onTapGesture { self.selectMode = true }
                 }
                 else {
@@ -50,101 +78,83 @@ struct LibraryView: View {
                 }
             }.frame(height: 50).background(Color(red: 0.168, green: 0.168, blue: 0.168).ignoresSafeArea()).foregroundColor(.gray)
             
-            //Filtering bar(all,photos,videos)
             HStack(alignment: .center){
                 HStack(alignment: .center,spacing: 100){
-                    
                     Button{ self.globalData.mediaFilter = 0 }
-                    label: {
-                        if(self.globalData.mediaFilter == 0) { Text("All").foregroundColor(.white) }
-                        else { Text("All").foregroundColor(.gray) }
-                    }
+                label: {
+                    if(self.globalData.mediaFilter == 0) { Text("All").foregroundColor(.white) }
+                    else { Text("All").foregroundColor(.gray) }
+                }
                     
                     Button{ self.globalData.mediaFilter = 1 }
-                    label: {
-                        if(self.globalData.mediaFilter == 1) { Text("Photos").foregroundColor(.white) }
-                        else { Text("Photos").foregroundColor(.gray) }
-                    }
+                label: {
+                    if(self.globalData.mediaFilter == 1) { Text("Photos").foregroundColor(.white) }
+                    else { Text("Photos").foregroundColor(.gray) }
+                }
                     
                     Button{ self.globalData.mediaFilter = 2 }
-                    label: {
-                        if(self.globalData.mediaFilter == 2) { Text("Videos").foregroundColor(.white) }
-                        else { Text("Videos").foregroundColor(.gray) }
-                    }
+                label: {
+                    if(self.globalData.mediaFilter == 2) { Text("Videos").foregroundColor(.white) }
+                    else { Text("Videos").foregroundColor(.gray) }
+                }
                 }.padding([.horizontal],100)
             }.frame(height: 50).background(Color(red: 0.168, green: 0.168, blue: 0.168)).cornerRadius(10).foregroundColor(.gray)
-            
-            //Content - images
-            if(self.globalData.mediaList.count == 0){
-                Spacer()
-                Image(systemName: "photo.fill").foregroundColor(.gray).font(.custom("Photo icon", fixedSize: 80))
-                Text("No video cache").foregroundColor(.gray).padding([.top],20)
-                Spacer()
-            }
-            else{
-                if(!self.globalData.mediaFetched){
-                    Spacer()
-                    ProgressView().scaleEffect(x: 4, y: 4, anchor: .center).progressViewStyle(CircularProgressViewStyle(tint: .white))
-                    Spacer()
-                }
-                else{
-                    ScrollView(){
-                        LazyVGrid(columns: columns, spacing: 5) {
-                            ForEach(self.globalData.mediaSections.reversed(), id: \.self){ (subArray) in
-                                if(self.subArrayNotEmptyWithFilter(subArray: subArray)){
-                                    Section(){
-                                        ForEach(subArray.reversed(), id: \.self){ (file) in
-                                            if(self.fileAcceptFilter(file: file)){
-                                                createPreview(file: file)
-                                            }
-                                        }
-                                    } header: {
-                                        HStack{
-                                            Text(subArray.first?.timeCreated.prefix(10) ?? "").font(.custom("date", size: 15)).bold().padding(.top, 20.0).foregroundColor(.gray)
-                                            Spacer()
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            //Bottom bar, actions for selected images
-            if(self.selectMode){
-                HStack(spacing: 50){
-                    Image(systemName: "trash").foregroundColor(.white).onTapGesture {
-                        self.djiService.libController.removeFiles(files: self.selectedItems, completionHandler: {(error) in
-                            if(error != nil) {
-                                createAlert(globalData: self.globalData, title: "Error", msg: "There was an error during removing selected files: \(String(describing: error))")
-                            }
-                            else{
-                                self.selectMode = false
-                                self.selectedItems.removeAll()
-                            }
-                        })
-                    }
-                    Spacer()
-                    
-                    Button("Clear"){ self.selectedItems.removeAll() }.foregroundColor(.white)
-                    Spacer()
-                    
-                    Button("Select All"){
-                        for obj in self.globalData.mediaList{
-                            self.selectedItems.insert(obj)
-                        }
-                    }.foregroundColor(.white)
-                    Spacer()
-                    
-                    Image(systemName: "square.and.arrow.up").foregroundColor(.white).onTapGesture {
-                        createAlert(globalData: self.globalData, title: "In Develompent", msg: "This feature will be available in next version")
-                    }
-                }.frame(height: 40).background(Color(red: 0.168, green: 0.168, blue: 0.168).ignoresSafeArea()).foregroundColor(.gray)
-            }
-        }.background(Color.black.ignoresSafeArea()).alert(isPresented: self.$globalData.globalAlert){ Alert(title: self.globalData.alertTitle, message: self.globalData.alertMsg, dismissButton: .cancel()) }
+        }
     }
     
-    private func createPreview(file : DJIMediaFile) -> some View {
+    private func createBottomBar() -> some View{
+        HStack(spacing: 50){
+            Image(systemName: "trash").foregroundColor(.white).onTapGesture {
+                self.djiService.libController.removeFiles(files: self.selectedItems, completionHandler: {(error) in
+                    if(error != nil) {
+                        createAlert(globalData: self.globalData, title: "Error", msg: "There was an error during removing selected files: \(error!)")
+                    }
+                    else{
+                        self.selectMode = false
+                        self.selectedItems.removeAll()
+                    }
+                })
+            }
+            Spacer()
+            
+            Button("Clear"){ self.selectedItems.removeAll() }.foregroundColor(.white)
+            Spacer()
+            
+            Button("Select All"){
+                for obj in self.globalData.mediaList{
+                    self.selectedItems.insert(obj)
+                }
+            }.foregroundColor(.white)
+            Spacer()
+            
+            Image(systemName: "square.and.arrow.up").foregroundColor(.white).onTapGesture {
+                createAlert(globalData: self.globalData, title: "In Develompent", msg: "This feature will be available in next version")
+            }
+        }.frame(height: 40).background(Color(red: 0.168, green: 0.168, blue: 0.168).ignoresSafeArea()).foregroundColor(.gray)
+    }
+    
+    private func createPreviewList() -> some View{
+        LazyVGrid(columns: columns, spacing: 5) {
+            ForEach(self.globalData.mediaSections.reversed(), id: \.self){ (subArray) in
+                if(self.subArrayNotEmptyWithFilter(subArray: subArray)){
+                    Section(){
+                        ForEach(subArray.reversed(), id: \.self){ (file) in
+                            if(self.fileAcceptFilter(file: file)){
+                                self.createPreviewForFile(file: file)
+                            }
+                        }
+                    } header: {
+                        HStack{
+                            Text(subArray.first?.timeCreated.prefix(10) ?? "").font(.custom("date", size: 15)).bold().padding(.top, 20.0).foregroundColor(.gray)
+                            Spacer()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func createPreviewForFile(file : DJIMediaFile) -> some View {
         ZStack{
             let contains = self.selectedItems.contains(file)
             if(contains){
@@ -156,11 +166,11 @@ struct LibraryView: View {
                     .onTapGesture {
                     if(self.selectMode) { self.selectedItems.insert(file) }
                     else {
-                        self.globalData.mediaPreview = file
+                        self.globalData.mediaLibPicked = file
                         if(self.isVideo(file: file)){
                             self.djiService.libController.prepareVideoPreview(file: file)
                         }
-                        else {
+                        else if(self.isPano(file: file) || self.isPhoto(file: file)){
                             self.djiService.libController.fetchPreviewFor(file: file)
                         }
                     }

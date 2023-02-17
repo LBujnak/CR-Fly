@@ -21,6 +21,7 @@
 		808F8E6C2978CA5C00615628 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808F8E6B2978CA5C00615628 /* Helper.swift */; };
 		808F8E6E29793E1800615628 /* LibraryCommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808F8E6D29793E1800615628 /* LibraryCommunicationService.swift */; };
 		808F8E7A2979701B00615628 /* LibraryPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808F8E792979701B00615628 /* LibraryPreviewView.swift */; };
+		80AF7C59299F597100641EFC /* HideableTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF7C58299F597100641EFC /* HideableTopView.swift */; };
 		80F424612979D9DC0076C10D /* VideoPlaybackView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80F424602979D9DC0076C10D /* VideoPlaybackView.storyboard */; };
 		80F424632979D9F40076C10D /* VideoPlaybackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F424622979D9F40076C10D /* VideoPlaybackController.swift */; };
 		E71595345F59656F0ED2FF57 /* Pods_CR_Fly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7337CD2CF3A5DEFE5D7CFA49 /* Pods_CR_Fly.framework */; };
@@ -45,6 +46,7 @@
 		808F8E6B2978CA5C00615628 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		808F8E6D29793E1800615628 /* LibraryCommunicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCommunicationService.swift; sourceTree = "<group>"; };
 		808F8E792979701B00615628 /* LibraryPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPreviewView.swift; sourceTree = "<group>"; };
+		80AF7C58299F597100641EFC /* HideableTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideableTopView.swift; sourceTree = "<group>"; };
 		80F424602979D9DC0076C10D /* VideoPlaybackView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlaybackView.storyboard; sourceTree = "<group>"; };
 		80F424622979D9F40076C10D /* VideoPlaybackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlaybackController.swift; sourceTree = "<group>"; };
 		A67DEC7499F7039E07771A2A /* Pods-CR Fly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CR Fly.release.xcconfig"; path = "Target Support Files/Pods-CR Fly/Pods-CR Fly.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				808F8E6B2978CA5C00615628 /* Helper.swift */,
+				80AF7C58299F597100641EFC /* HideableTopView.swift */,
 			);
 			path = Utilties;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80AF7C59299F597100641EFC /* HideableTopView.swift in Sources */,
 				80F424632979D9F40076C10D /* VideoPlaybackController.swift in Sources */,
 				808F8E6E29793E1800615628 /* LibraryCommunicationService.swift in Sources */,
 				803D79DE2952500900DC0D3E /* GlobalData.swift in Sources */,
@@ -303,6 +307,7 @@
 		803D79BB294E053500DC0D3E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -363,6 +368,7 @@
 		803D79BC294E053500DC0D3E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -407,6 +413,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

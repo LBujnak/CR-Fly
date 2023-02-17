@@ -21,8 +21,9 @@ class GlobalData : ObservableObject {
     @Published var mediaList : [DJIMediaFile] = []
     @Published var mediaSections : [[DJIMediaFile]] = []
     @Published var mediaFetched = false
-    @Published var mediaPreview : DJIMediaFile? = nil
-    @Published var mediaPreviewFetched = false
-    @Published var mediaVideoPlayReady = false
-    @Published var mediaVideoPlaying = false
+    @Published var mediaLibPicked : DJIMediaFile? = nil
+    @Published var mediaPreviewReady = false
+    @Published var mediaPreviewVideoPlaying = false
+    @Published var mediaPreviewVideoCTime : Int = 0
+    @Published var mediaPreviewVideoChanging : Bool = false
 }

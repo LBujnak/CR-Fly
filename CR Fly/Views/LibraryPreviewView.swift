@@ -6,106 +6,179 @@ struct LibraryPreviewView: View {
     @ObservedObject var globalData : GlobalData
     let djiService : ProductCommunicationService
     
+    @State var showingMediaControls : Bool = true
+    
     var body: some View {
         VStack{
-            ZStack{
-                HStack{
-                    if(self.globalData.mediaPreview != nil && self.isVideo(file: self.globalData.mediaPreview!)) {
-                        VPView().background(Color.black.ignoresSafeArea()).ignoresSafeArea().opacity((self.globalData.mediaVideoPlayReady) ? 1 : 0)
-                        
-                    }
-                    else if(self.globalData.mediaPreviewFetched){
-                        Image(uiImage: self.globalData.mediaPreview!.preview!).resizable().scaledToFit()
-                    }
-                }
-                VStack{
-                    //TOP Bar
-                    HStack(alignment: .top, spacing: 30){
-                        Button("←"){
-                            self.globalData.mediaPreviewFetched = false
-                            self.globalData.mediaPreview = nil
-                            
-                            if(self.globalData.mediaVideoPlayReady) {
-                                self.djiService.libController.stopVideo(completionHandler: {(error) in
-                                    if(error != nil) { createAlert(globalData: self.globalData, title: "Error", msg: String(describing: "Error while stopping video: \(String(describing: error))"))
-                                    }
-                                })
-                            }
-                            
-                            self.globalData.mediaVideoPlayReady = false
-                            self.globalData.mediaVideoPlaying = false
-                        }.foregroundColor(.white).font(.largeTitle)
-                                        
-                        Spacer()
-                        Text("Low-Res Preview").bold().font(.caption).foregroundColor(.white).padding([.top],20)
-                        if(self.globalData.mediaPreview != nil){
-                            Text(self.globalData.mediaPreview!.timeCreated).foregroundColor(.white).padding([.top],15)
-                        }
-                        Spacer()
-                        
-                        Image(systemName: "square.and.arrow.up").font(.title2).padding([.top],10).foregroundColor(.white).onTapGesture {
-                            createAlert(globalData: self.globalData, title: "In Develompent", msg: "This feature will be available in next version")
-                        }
-                        
-                    }
-                        
-                    //Play,Pause buttons,Loading/
-                    Spacer()
-                    if(!self.globalData.mediaVideoPlayReady && !self.globalData.mediaPreviewFetched){
-                        ProgressView().scaleEffect(x: 4, y: 4, anchor: .center).progressViewStyle(CircularProgressViewStyle(tint: .white))
-                    }
-                    
-                    if(self.globalData.mediaVideoPlayReady) {
-                        if(!self.globalData.mediaVideoPlaying && self.globalData.mediaVideoPlayReady){
-                            Image(systemName: "play.circle.fill").font(.custom("PlayPause", size: 70)).foregroundColor(.white).onTapGesture {
-                                    
-                                self.djiService.libController.resumeVideo(completionHandler: {(error) in
-                                    if(error != nil){
-                                        createAlert(globalData: self.globalData, title: "Error", msg: "Error playing video: \(String(describing: error))")
-                                    }
-                                    self.globalData.mediaVideoPlaying = true
-                                })
-                            }
-                        }
-                        else if(self.globalData.mediaVideoPlaying){
-                            Image(systemName: "pause.circle.fill").font(.custom("PlayPause", size: 70)).foregroundColor(.white).onTapGesture {
-                                self.djiService.libController.pauseVideo(completionHandler: {(error) in
-                                    if(error != nil){
-                                        createAlert(globalData: self.globalData, title: "Error", msg: "Error resuming video: \(String(describing: error))")
-                                    }
-                                    self.globalData.mediaVideoPlaying = false
-                                })
-                            }
-                        }
-                    }
-                    Spacer()
-                    
-                    //Bottom Bar
+            if(self.globalData.mediaLibPicked != nil){
+                ZStack{
                     HStack{
-                        Image(systemName: "trash").font(.title2).foregroundColor(.white).onTapGesture {
-                            self.djiService.libController.removePreviewFile(completionHandler: {(error) in
-                                if(error != nil) {
-                                    createAlert(globalData: self.globalData, title: "Error", msg: "There was an error during removing selected files: \(String(describing: error))")
+                        if(self.globalData.mediaLibPicked != nil && self.isVideo(file: self.globalData.mediaLibPicked!)) {
+                            VPView().background(Color.black.ignoresSafeArea()).ignoresSafeArea().opacity((self.globalData.mediaPreviewReady) ? 1 : 0)
+                            
+                        }
+                        else if(self.globalData.mediaPreviewReady){
+                            Image(uiImage: self.globalData.mediaLibPicked!.preview!).resizable().scaledToFit()
+                        }
+                    }
+                    VStack{
+                        if(self.showingMediaControls) { self.createTopBar() }
+                        
+                        //Play,Pause buttons,Loading
+                        Spacer()
+                        if(!self.globalData.mediaPreviewReady){
+                            ProgressView().scaleEffect(x: 4, y: 4, anchor: .center).progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        }
+                        
+                        if(self.isVideo(file: self.globalData.mediaLibPicked) && self.globalData.mediaPreviewReady) {
+                            if(!self.globalData.mediaPreviewVideoPlaying && self.globalData.mediaPreviewReady){
+                                Image(systemName: "play.circle.fill").font(.custom("PlayPause", size: 70)).foregroundColor(.white).onTapGesture {
+                                    self.djiService.libController.resumeVideo(completionHandler: {(error) in
+                                        if(error != nil){
+                                            createAlert(globalData: self.globalData, title: "Error", msg: "Error resuming video: \( error!)")
+                                            return
+                                        }
+                                        self.globalData.mediaPreviewVideoPlaying = true
+                                        self.showingMediaControls = false
+                                    })
                                 }
-                                else{
-                                    self.globalData.mediaPreview = nil
-                                    self.globalData.mediaPreviewFetched = false
+                            }
+                            else if(self.globalData.mediaPreviewVideoPlaying && self.showingMediaControls){
+                                Image(systemName: "pause.circle.fill").font(.custom("PlayPause", size: 70)).foregroundColor(.white).onTapGesture {
+                                    self.djiService.libController.pauseVideo(completionHandler: {(error) in
+                                        if(error != nil){
+                                            createAlert(globalData: self.globalData, title: "Error", msg: "Error resuming video: \(error!)")
+                                            return
+                                        }
+                                        self.globalData.mediaPreviewVideoPlaying = false
+                                    })
                                 }
-                            })
+                            }
                         }
                         Spacer()
                         
-                        //TODO: Slider na zmenu casu videa
+                        if(self.showingMediaControls) { self.createBottomBar() }
                     }
                 }
             }
-        }.background(Color.black.ignoresSafeArea()).alert(isPresented: self.$globalData.globalAlert){ Alert(title: self.globalData.alertTitle, message: self.globalData.alertMsg, dismissButton: .cancel()) }
+        }.background(Color.black.ignoresSafeArea()).alert(isPresented: self.$globalData.globalAlert ){ Alert(title: self.globalData.alertTitle, message: self.globalData.alertMsg, dismissButton: .cancel()) }
+            .onTapGesture { self.showingMediaControls.toggle() }
     }
     
-    private func isVideo(file: DJIMediaFile) -> Bool{
-        if(file.mediaType == DJIMediaType.MOV || file.mediaType == DJIMediaType.MP4) {
+    private func createTopBar() -> some View{
+        HStack(alignment: .top, spacing: 30){
+            Button("←"){
+                if(self.isVideo(file: self.globalData.mediaLibPicked!)) {
+                    self.djiService.libController.stopVideo(completionHandler: {(error) in
+                        if(error != nil) { createAlert(globalData: self.globalData, title: "Error", msg: "Error while stopping video: \(error!)")
+                        }
+                    })
+                }
+                
+                self.globalData.mediaPreviewVideoPlaying = false
+                self.globalData.mediaPreviewVideoCTime = 0
+                self.globalData.mediaPreviewReady = false
+                self.globalData.mediaLibPicked = nil
+            }.foregroundColor(.white).font(.largeTitle)
+                            
+            Spacer()
+            Text("Low-Res Preview").bold().font(.caption).foregroundColor(.white).padding([.top],20)
+            if(self.globalData.mediaLibPicked != nil){
+                Text(self.globalData.mediaLibPicked!.timeCreated).foregroundColor(.white).padding([.top],15)
+            }
+            Spacer()
+            
+            Image(systemName: "square.and.arrow.up").font(.title2).padding([.top],10).foregroundColor(.white).onTapGesture {
+                createAlert(globalData: self.globalData, title: "In Develompent", msg: "This feature will be available in next version")
+            }
+        }
+    }
+    
+    private func createBottomBar() -> some View{
+        HStack{
+            Image(systemName: "trash").font(.title2).foregroundColor(.white).onTapGesture {
+                self.djiService.libController.removePreviewFile(completionHandler: {(error) in
+                    if(error != nil) {
+                        createAlert(globalData: self.globalData, title: "Error", msg: "There was an error during removing selected files: \(error!)")
+                    }
+                    else{
+                        self.globalData.mediaLibPicked = nil
+                        self.globalData.mediaPreviewReady = false
+                    }
+                })
+            }
+            Spacer()
+            
+            if(self.isVideo(file: self.globalData.mediaLibPicked!)){
+                let totalTime : Double = Double(Int(globalData.mediaLibPicked!.durationInSeconds))
+                
+                let elapsedTime = Binding(
+                    get: { Double(self.globalData.mediaPreviewVideoCTime) },
+                    set: { self.globalData.mediaPreviewVideoCTime = Int($0) }
+                )
+                HStack{
+                    let elapsed = secondsToVideoTime(seconds: self.globalData.mediaPreviewVideoCTime)
+                    let total = secondsToVideoTime(seconds: Int(self.globalData.mediaLibPicked!.durationInSeconds))
+                    
+                    if(totalTime >= 3600){ Text(String(format: "%.2i:%.2i:%.2i",elapsed.hours,elapsed.minutes,elapsed.seconds)).foregroundColor(.white) }
+                    else { Text(String(format: "%.2i:%.2i",elapsed.minutes,elapsed.seconds)).foregroundColor(.white) }
+                    
+                    Slider(value: elapsedTime, in: 0...totalTime ,onEditingChanged: {(chg) in
+                        self.globalData.mediaPreviewVideoChanging = chg
+                        if(!chg) {
+                            self.djiService.libController.changeVideoPreviewTime(time: Float(self.globalData.mediaPreviewVideoCTime), completionHandler: {(error) in
+                                if(error != nil){
+                                    createAlert(globalData: self.globalData, title: "Error", msg: "There was an error during changing preview time: \(error!)")
+                                }
+                            })
+                        }
+                    }).tint(.white).onAppear(){
+                        let thumbImage = ImageRenderer(content: bullThumb).uiImage ?? UIImage()
+                        UISlider.appearance().setThumbImage(thumbImage, for: .normal)
+                    }
+                    
+                    if(totalTime >= 3600){ Text(String(format: "%.2i:%.2i:%.2i",total.hours,total.minutes,total.seconds)).foregroundColor(.white) }
+                    else { Text(String(format: "%.2i:%.2i",total.minutes,total.seconds)).foregroundColor(.white) }
+                }.frame(width: 400)
+            }
+            Spacer()
+        }
+    }
+    
+    private func secondsToVideoTime(seconds : Int) -> videoTime{
+        let hours = seconds/3600
+        let minutes = (seconds - hours*3600)/60
+        let sec = (seconds - hours*3600 - minutes*60)
+        return videoTime(seconds: sec, minutes: minutes, hours: hours)
+    }
+    
+    private func isVideo(file: DJIMediaFile?) -> Bool{
+        if(file == nil) { return false }
+        else if(file!.mediaType == DJIMediaType.MOV || file!.mediaType == DJIMediaType.MP4) {
             return true
         } else { return false }
+    }
+    
+    var bullThumb: some View {
+        //VStack {
+            ZStack {
+                Circle()
+                    .frame(width: 25, height: 25)
+                    .foregroundColor(.white)
+            }.foregroundColor(.blue)
+        //}.frame(width: 50, height: 60)
+    }
+    
+    class videoTime{
+        let seconds : Int
+        let minutes : Int
+        let hours : Int
+        
+        init(seconds: Int, minutes: Int, hours: Int) {
+            self.seconds = seconds
+            self.minutes = minutes
+            self.hours = hours
+        }
     }
 }
 

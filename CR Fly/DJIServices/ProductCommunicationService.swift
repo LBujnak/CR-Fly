@@ -42,7 +42,6 @@ class ProductCommunicationService: NSObject {
         DJISDKManager.disableBridgeMode()
         print("Bridge connection to " + self.globalData.bridgeAppIP + " has been disabled.")
     }
-    
 }
 
 extension ProductCommunicationService : DJISDKManagerDelegate {
@@ -53,7 +52,7 @@ extension ProductCommunicationService : DJISDKManagerDelegate {
     
     func appRegisteredWithError(_ error: Error?) {
         if (error != nil) {
-            createAlert(globalData: self.globalData, title: "SDK Registered with error", msg: error?.localizedDescription ?? "")
+            createAlert(globalData: self.globalData, title: "SDK Registered with error", msg: error!.localizedDescription)
             return
         }
         
@@ -75,9 +74,12 @@ extension ProductCommunicationService : DJISDKManagerDelegate {
         print("Entered productDisconnected")
         self.globalData.droneConnected = false
         self.globalData.mediaFetched = false
-        self.globalData.mediaPreview = nil
+        self.globalData.mediaLibPicked = nil
         self.globalData.mediaSections = []
-        //self.globalData.mediaList = []
+        self.globalData.mediaList = []
+        self.globalData.mediaPreviewReady = false
+        self.globalData.mediaPreviewVideoCTime = 0
+        self.globalData.mediaPreviewVideoPlaying = false
         
         if(self.globalData.libMode) { self.globalData.libMode = false }
         if(self.globalData.fpvMode) { self.globalData.fpvMode = false }

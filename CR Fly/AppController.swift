@@ -19,7 +19,7 @@ struct AppController: App {
                 DroneFPVView(globalData: self.globalData)
             }
             else if(self.globalData.libMode){
-                if(self.globalData.mediaPreview == nil){
+                if(self.globalData.mediaLibPicked == nil){
                     LibraryView(globalData: self.globalData, djiService: self.djiService)
                 }
                 else {

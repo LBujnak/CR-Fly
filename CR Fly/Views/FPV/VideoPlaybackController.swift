@@ -15,8 +15,7 @@ class VideoPlaybackController: UIViewController, DJICameraDelegate{
         guard let camera = product.camera else { return }
         camera.delegate = self
         
-        DJIVideoPreviewer.instance()?.start()
-        
+        DJIVideoPreviewer.instance()?.start()        
         adapter = VideoPreviewerAdapter.init()
         adapter?.start()
         
